@@ -1,0 +1,24 @@
+GetOrg:  #root widget now custom widget
+
+
+<GetOrg>:
+	orientation: "vertical"
+	search_input: search_box
+	search_results: search_results_list
+	BoxLayout:
+		height: "40dp"
+		size_hint_y: None
+		TextInput:
+			id: search_box
+			size_hint_x: 50
+		Button:
+			text: "Get Org"
+			size_hint_x: 25
+			on_press: root.get_org()
+		Button:
+			size_hint_x: 25
+			text: "For Future Use"
+
+	ListView:
+		id: search_results_list
+		item_strings: []
