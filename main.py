@@ -17,9 +17,8 @@ class GetOrg(BoxLayout):
 
 		headers = {
     		'content-type': "application/json",
-    		'x-cisco-meraki-api-key': "3145297b03d779c37a04297dc91544a30b316fdf",
+    		'x-cisco-meraki-api-key': "your API Key",
     		'cache-control': "no-cache",
-    		'postman-token': "bd89db47-3ecf-47dc-327f-5aa2c34e6b25"
     		}
 
 		response = requests.request("GET", url, headers=headers)
