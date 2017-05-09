@@ -4,15 +4,12 @@ import requests
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
-from kivy.uix.listview import ListView
-
-
+from kivy.uix.listview import ListItemButton
 
 
 class GetOrg(BoxLayout):
-	#search_input = ObjectProperty()
-	output_org = ObjectProperty()
 	
+	search_results = ObjectProperty()
 	
 	def get_org(self):
 		org_file = {}
@@ -20,7 +17,7 @@ class GetOrg(BoxLayout):
 
 		headers = {
     		'content-type': "application/json",
-    		'x-cisco-meraki-api-key': "<Your API Key>",
+    		'x-cisco-meraki-api-key': "3145297b03d779c37a04297dc91544a30b316fdf",
     		'cache-control': "no-cache",
     		}
 
@@ -28,26 +25,18 @@ class GetOrg(BoxLayout):
 		request = self.found_org(search_response, org_file)
 		
 	def found_org(self, search_response, org_file):
-		print(response.text)
-		org_file =search_response.json()
+		org_file = search_response.json()
+		output_org = ['Organization:  {}   ID:  {}' .format(d['name'], d['id']) for d in org_file]
+		self.search_results.item_strings = org_file
+		self.search_results.adapter.data.clear()
+		self.search_results.adapter.data.extend(output_org)
+		self.search_results._trigger_reset_populate()
 		
-		
-		output_org = ['{}' .format(d['name']) for d in org_file]
-		self.output_org.item_strings = output_org
-
-		"""for org in org_file:
-			print('Name: ', org['name'])
-			print('ID: ' , org['id'])"""
-		
-
-
-			
-
-class GetOrg(App):
+class Provision(App):
 	pass
 
 if __name__ == '__main__':
-	GetOrg() .run()
+	Provision() .run()
 
 
  

@@ -1,8 +1,8 @@
 #: import main main
+#: import ListItemButton kivy.uix.listview.ListItemButton
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
-#: import ListItemLabel kivy.uix.listview.ListItemButton
 
-GetOrg:  #root widget now custom widget
+GetOrg:
 
 <GetOrg>:
 	orientation: "vertical"
@@ -23,4 +23,5 @@ GetOrg:  #root widget now custom widget
 			text: "For Future Use"
 	ListView:
 		id: search_results_list
-			adapter: ListAdapter(data=[], cls=ListItemButton)
+		adapter:
+			ListAdapter(data=[], cls=ListItemButton)
