@@ -11,7 +11,7 @@ from kivy.uix.listview import ListView
 
 class GetOrg(BoxLayout):
 	#search_input = ObjectProperty()
-	search_results = ObjectProperty()
+	output_org = ObjectProperty()
 	
 	
 	def get_org(self):
@@ -28,10 +28,16 @@ class GetOrg(BoxLayout):
 		request = self.found_org(search_response, org_file)
 		
 	def found_org(self, search_response, org_file):
+		print(response.text)
 		org_file =search_response.json()
-		for org in org_file:
+		
+		
+		output_org = ['{}' .format(d['name']) for d in org_file]
+		self.output_org.item_strings = output_org
+
+		"""for org in org_file:
 			print('Name: ', org['name'])
-			print('ID: ' , org['id'])
+			print('ID: ' , org['id'])"""
 		
 
 
@@ -44,3 +50,4 @@ if __name__ == '__main__':
 	GetOrg() .run()
 
 
+ 
