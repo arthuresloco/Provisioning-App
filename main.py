@@ -17,7 +17,7 @@ class GetOrg(BoxLayout):
 
 		headers = {
     		'content-type': "application/json",
-    		'x-cisco-meraki-api-key': "<Your API Key",
+    		'x-cisco-meraki-api-key': "<Your API Key>",
     		'cache-control': "no-cache",
     		}
 
